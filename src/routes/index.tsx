@@ -137,38 +137,42 @@ function Index() {
 
 
       {/* Músicas */}
-      <section id="musicas" className="mx-auto max-w-3xl px-6 py-14">
+      <section id="musicas" className="mx-auto max-w-5xl px-6 py-14">
         <h2 className="font-display text-3xl tracking-wide sm:text-4xl">Músicas para baixar</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           Ouve aqui e baixa gratuitamente. Mais faixas em breve.
         </p>
-        <ul className="mt-8 space-y-4">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tracks.map((t) => (
-            <li key={t.title} className="rounded-2xl border border-border bg-card p-5">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <h3 className="flex items-center gap-2 font-display text-2xl tracking-wide">
-                    <Play className="h-4 w-4 text-primary" /> {t.title}
-                  </h3>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {t.subtitle}
-                  </p>
+            <li
+              key={t.title}
+              className="flex flex-col rounded-2xl border border-border bg-card p-5"
+            >
+              <div className="flex flex-1 flex-col">
+                <h3 className="flex items-center gap-2 font-display text-2xl tracking-wide">
+                  <Play className="h-4 w-4 text-primary" /> {t.title}
+                </h3>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {t.subtitle}
+                </p>
+                <div className="mt-auto pt-4">
+                  <audio controls preload="none" src={t.url} className="w-full">
+                    <track kind="captions" />
+                  </audio>
                 </div>
-                <a
-                  href={t.url}
-                  download={t.file}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
-                >
-                  <Download className="h-4 w-4" /> Baixar
-                </a>
               </div>
-              <audio controls preload="none" src={t.url} className="mt-4 w-full">
-                <track kind="captions" />
-              </audio>
+              <a
+                href={t.url}
+                download={t.file}
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              >
+                <Download className="h-4 w-4" /> Baixar
+              </a>
             </li>
           ))}
         </ul>
       </section>
+
 
       {/* Em breve */}
       <section className="mx-auto max-w-3xl px-6 py-14">
