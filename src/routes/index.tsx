@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Play, Music4, CalendarCheck, Handshake, Bell, Instagram } from "lucide-react";
+import { Download, Play, Music4, CalendarCheck, Handshake, Instagram } from "lucide-react";
+
+import { NotifyForm } from "@/components/NotifyForm";
+
 
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import profileAsset from "@/assets/profile.jpg.asset.json";
