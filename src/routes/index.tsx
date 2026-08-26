@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Play, Music4, CalendarCheck, Handshake, Instagram } from "lucide-react";
+import { Download, Play, Music4, CalendarCheck, Handshake, Instagram, MessageCircle } from "lucide-react";
+
 
 import { NotifyForm } from "@/components/NotifyForm";
 
@@ -33,6 +34,8 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP = "244927184471";
 const wa = (text: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+const wab = () => `https://wa.me/${WHATSAPP}`;
+
 
 const tracks = [
   {
