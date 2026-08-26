@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Play, Music4, CalendarCheck, Handshake, Bell, Instagram } from "lucide-react";
+import { Download, Play, Music4, CalendarCheck, Handshake, Instagram } from "lucide-react";
+
+import { NotifyForm } from "@/components/NotifyForm";
+
 
 import heroAsset from "@/assets/hero.jpg.asset.json";
 import profileAsset from "@/assets/profile.jpg.asset.json";
@@ -162,14 +165,8 @@ function Index() {
             Um novo trabalho de Emanú Tecas está em fase final. Pede para ser notificado e recebes o
             link no dia do lançamento, antes de todos.
           </p>
-          <a
-            href={wa("Olá! Quero ser notificado do novo lançamento do Emanú Tecas.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition hover:opacity-90"
-          >
-            <Bell className="h-4 w-4" /> Quero ser notificado
-          </a>
+          <NotifyForm />
+
         </div>
       </section>
 
