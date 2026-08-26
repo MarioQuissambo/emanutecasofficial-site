@@ -98,8 +98,17 @@ function Index() {
             >
               <CalendarCheck className="h-4 w-4" /> Contactos para show
             </a>
+            <a
+              href={wab()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
+            >
+              <MessageCircle className="h-4 w-4" /> Conversar via WhatsApp
+            </a>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">WhatsApp: +244 927 184 471</p>
+
         </div>
       </section>
 
@@ -107,15 +116,16 @@ function Index() {
       <section className="mx-auto max-w-3xl px-6 py-14">
         <h2 className="font-display text-3xl tracking-wide sm:text-4xl">Sobre o artista</h2>
         <p className="mt-4 text-muted-foreground">
-          Emanú Tecas é cantor e compositor. O seu som junta batidas actuais a letras honestas
-          sobre fé, luta e superação. Já subiu a palcos de projectos e eventos culturais, e continua
-          a trabalhar em novas faixas para levar a mensagem mais longe.
+          Emanú Tecas é cantor e compositor do grupo <strong>Projecto Bwê D'Talentos</strong>. O seu som junta
+          batidas de afrobeat a letras honestas de rap, falando de fé, luta e superação. Já subiu a palcos
+          de projectos e eventos culturais, e continua a trabalhar em novas faixas para levar a mensagem
+          mais longe.
         </p>
         <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {[
-            ["Estilo", "Afro / Rap Gospel"],
+            ["Estilo", "Afrobeat · Rap"],
             ["Base", "Angola"],
-            ["Disponível", "Shows e colaborações"],
+            ["Grupo", "Projecto Bwê D'Talentos"],
           ].map(([k, v]) => (
             <div key={k} className="rounded-xl border border-border bg-card p-4">
               <dt className="text-xs uppercase tracking-widest text-primary">{k}</dt>
@@ -124,6 +134,7 @@ function Index() {
           ))}
         </dl>
       </section>
+
 
       {/* Músicas */}
       <section id="musicas" className="mx-auto max-w-3xl px-6 py-14">
