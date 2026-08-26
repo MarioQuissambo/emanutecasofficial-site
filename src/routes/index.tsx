@@ -195,7 +195,7 @@ function Index() {
         <p className="mt-2 text-sm text-muted-foreground">
           Todas as mensagens chegam directamente ao WhatsApp +244 927 184 471.
         </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <a
             href={wa("Olá Emanú Tecas! Quero convidar-te para um evento/show. Data e local:")}
             target="_blank"
@@ -220,8 +220,21 @@ function Index() {
               Features, produção, marcas e projectos musicais.
             </p>
           </a>
+          <a
+            href={wab()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl border border-whatsapp/50 bg-card p-6 transition hover:border-whatsapp"
+          >
+            <MessageCircle className="h-6 w-6 text-whatsapp" />
+            <h3 className="mt-3 font-display text-2xl tracking-wide">Conversar</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Fala directamente com Emanú Tecas pelo WhatsApp.
+            </p>
+          </a>
         </div>
       </section>
+
 
       <footer className="border-t border-border px-6 py-10 text-center text-sm text-muted-foreground">
         <p className="flex items-center justify-center gap-2">
