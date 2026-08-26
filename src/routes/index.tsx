@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Play, Music4, CalendarCheck, Handshake, Instagram } from "lucide-react";
+import { Download, Play, Music4, CalendarCheck, Handshake, Instagram, MessageCircle } from "lucide-react";
+
 
 import { NotifyForm } from "@/components/NotifyForm";
 
@@ -33,6 +34,8 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP = "244927184471";
 const wa = (text: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+const wab = () => `https://wa.me/${WHATSAPP}`;
+
 
 const tracks = [
   {
@@ -95,8 +98,18 @@ function Index() {
             >
               <CalendarCheck className="h-4 w-4" /> Contactos para show
             </a>
+            <a
+              href={wab()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold text-whatsapp-foreground transition hover:opacity-90"
+            >
+              <MessageCircle className="h-4 w-4" /> Conversar via WhatsApp
+            </a>
+
           </div>
           <p className="mt-4 text-sm text-muted-foreground">WhatsApp: +244 927 184 471</p>
+
         </div>
       </section>
 
@@ -104,15 +117,16 @@ function Index() {
       <section className="mx-auto max-w-3xl px-6 py-14">
         <h2 className="font-display text-3xl tracking-wide sm:text-4xl">Sobre o artista</h2>
         <p className="mt-4 text-muted-foreground">
-          Emanú Tecas é cantor e compositor. O seu som junta batidas actuais a letras honestas
-          sobre fé, luta e superação. Já subiu a palcos de projectos e eventos culturais, e continua
-          a trabalhar em novas faixas para levar a mensagem mais longe.
+          Emanú Tecas é cantor e compositor do grupo <strong>Projecto Bwê D'Talentos</strong>. O seu som junta
+          batidas de afrobeat a letras honestas de rap, falando de fé, luta e superação. Já subiu a palcos
+          de projectos e eventos culturais, e continua a trabalhar em novas faixas para levar a mensagem
+          mais longe.
         </p>
         <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {[
-            ["Estilo", "Afro / Rap Gospel"],
+            ["Estilo", "Afrobeat · Rap"],
             ["Base", "Angola"],
-            ["Disponível", "Shows e colaborações"],
+            ["Grupo", "Projecto Bwê D'Talentos"],
           ].map(([k, v]) => (
             <div key={k} className="rounded-xl border border-border bg-card p-4">
               <dt className="text-xs uppercase tracking-widest text-primary">{k}</dt>
@@ -122,39 +136,44 @@ function Index() {
         </dl>
       </section>
 
+
       {/* Músicas */}
-      <section id="musicas" className="mx-auto max-w-3xl px-6 py-14">
+      <section id="musicas" className="mx-auto max-w-5xl px-6 py-14">
         <h2 className="font-display text-3xl tracking-wide sm:text-4xl">Músicas para baixar</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           Ouve aqui e baixa gratuitamente. Mais faixas em breve.
         </p>
-        <ul className="mt-8 space-y-4">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tracks.map((t) => (
-            <li key={t.title} className="rounded-2xl border border-border bg-card p-5">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <h3 className="flex items-center gap-2 font-display text-2xl tracking-wide">
-                    <Play className="h-4 w-4 text-primary" /> {t.title}
-                  </h3>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {t.subtitle}
-                  </p>
+            <li
+              key={t.title}
+              className="flex flex-col rounded-2xl border border-border bg-card p-5"
+            >
+              <div className="flex flex-1 flex-col">
+                <h3 className="flex items-center gap-2 font-display text-2xl tracking-wide">
+                  <Play className="h-4 w-4 text-primary" /> {t.title}
+                </h3>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {t.subtitle}
+                </p>
+                <div className="mt-auto pt-4">
+                  <audio controls preload="none" src={t.url} className="w-full">
+                    <track kind="captions" />
+                  </audio>
                 </div>
-                <a
-                  href={t.url}
-                  download={t.file}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
-                >
-                  <Download className="h-4 w-4" /> Baixar
-                </a>
               </div>
-              <audio controls preload="none" src={t.url} className="mt-4 w-full">
-                <track kind="captions" />
-              </audio>
+              <a
+                href={t.url}
+                download={t.file}
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              >
+                <Download className="h-4 w-4" /> Baixar
+              </a>
             </li>
           ))}
         </ul>
       </section>
+
 
       {/* Em breve */}
       <section className="mx-auto max-w-3xl px-6 py-14">
@@ -176,7 +195,7 @@ function Index() {
         <p className="mt-2 text-sm text-muted-foreground">
           Todas as mensagens chegam directamente ao WhatsApp +244 927 184 471.
         </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <a
             href={wa("Olá Emanú Tecas! Quero convidar-te para um evento/show. Data e local:")}
             target="_blank"
@@ -201,8 +220,21 @@ function Index() {
               Features, produção, marcas e projectos musicais.
             </p>
           </a>
+          <a
+            href={wab()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl border border-whatsapp/50 bg-card p-6 transition hover:border-whatsapp"
+          >
+            <MessageCircle className="h-6 w-6 text-whatsapp" />
+            <h3 className="mt-3 font-display text-2xl tracking-wide">Conversar</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Fala directamente com Emanú Tecas pelo WhatsApp.
+            </p>
+          </a>
         </div>
       </section>
+
 
       <footer className="border-t border-border px-6 py-10 text-center text-sm text-muted-foreground">
         <p className="flex items-center justify-center gap-2">
