@@ -102,10 +102,11 @@ function Index() {
               href={wab()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
+              className="inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold text-whatsapp-foreground transition hover:opacity-90"
             >
               <MessageCircle className="h-4 w-4" /> Conversar via WhatsApp
             </a>
+
           </div>
           <p className="mt-4 text-sm text-muted-foreground">WhatsApp: +244 927 184 471</p>
 
