@@ -184,7 +184,7 @@ function Index() {
             Um novo trabalho de Emanú Tecas está em fase final. Pede para ser notificado e recebes o
             link no dia do lançamento, antes de todos.
           </p>
-          <TeaserGate src={novoSingleAsset.url} kind="audio" />
+          <TeaserGate src={novoSingleAsset.url} videoSrc={teaserAsset.url} poster={heroAsset.url} />
 
 
         </div>
