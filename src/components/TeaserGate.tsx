@@ -1,62 +1,42 @@
-import { useState } from "react";
-import { Lock, PlayCircle } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 
 import { NotifyForm } from "@/components/NotifyForm";
 
 type TeaserGateProps = {
   src: string;
-  kind?: "audio" | "video";
+  videoSrc: string;
+  poster?: string;
 };
 
-export function TeaserGate({ src, kind = "audio" }: TeaserGateProps) {
-  const [unlocked, setUnlocked] = useState(false);
-  const [started, setStarted] = useState(false);
-
+export function TeaserGate({ src, videoSrc, poster }: TeaserGateProps) {
   return (
     <div className="mt-6">
       <div className="mx-auto max-w-lg rounded-2xl border border-border bg-secondary p-4">
         <p className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-primary">
-          <PlayCircle className="h-4 w-4" /> Pré-visualização do lançamento
+          <PlayCircle className="h-4 w-4" /> Teaser do lançamento
         </p>
-        {kind === "video" ? (
-          <video
-            controls
-            preload="metadata"
-            src={src}
-            className="mt-3 w-full rounded-xl"
-            onPlay={() => setStarted(true)}
-            onEnded={() => setUnlocked(true)}
-          >
-            <track kind="captions" />
-          </video>
-        ) : (
-          <audio
-            controls
-            preload="none"
-            src={src}
-            className="mt-3 w-full"
-            onPlay={() => setStarted(true)}
-            onEnded={() => setUnlocked(true)}
-          >
-            <track kind="captions" />
-          </audio>
-        )}
+        <video
+          controls
+          playsInline
+          preload="metadata"
+          src={videoSrc}
+          poster={poster}
+          className="mt-3 w-full rounded-xl"
+        >
+          <track kind="captions" />
+        </video>
+        <p className="mt-4 text-xs uppercase tracking-widest text-primary">Pré-escuta</p>
+        <audio controls preload="none" src={src} className="mt-2 w-full">
+          <track kind="captions" />
+        </audio>
         <p className="mt-3 text-xs text-muted-foreground">
-          {unlocked
-            ? "Obrigado por ouvires até ao fim. Já podes activar o aviso de lançamento."
-            : started
-              ? "A tocar... o botão de aviso aparece no fim."
-              : "Ouve o teaser até ao fim para desbloquear o aviso de lançamento."}
+          Vê o teaser, ouve a pré-escuta e activa o aviso para receberes o link no dia do
+          lançamento.
         </p>
       </div>
 
-      {unlocked ? (
-        <NotifyForm />
-      ) : (
-        <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-muted-foreground">
-          <Lock className="h-4 w-4" /> Quero ser notificado
-        </p>
-      )}
+      <NotifyForm />
     </div>
   );
 }
+

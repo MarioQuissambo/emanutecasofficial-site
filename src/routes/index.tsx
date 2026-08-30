@@ -10,6 +10,8 @@ import profileAsset from "@/assets/profile.jpg.asset.json";
 import vencedorAsset from "@/assets/vencedor.mp3.asset.json";
 import bweAsset from "@/assets/bwe-d-foco.mp3.asset.json";
 import novoSingleAsset from "@/assets/novo-single.mp3.asset.json";
+import teaserAsset from "@/assets/teaser.mp4.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -184,7 +186,7 @@ function Index() {
             Um novo trabalho de Emanú Tecas está em fase final. Pede para ser notificado e recebes o
             link no dia do lançamento, antes de todos.
           </p>
-          <TeaserGate src={novoSingleAsset.url} kind="audio" />
+          <TeaserGate src={novoSingleAsset.url} videoSrc={teaserAsset.url} poster={heroAsset.url} />
 
 
         </div>
